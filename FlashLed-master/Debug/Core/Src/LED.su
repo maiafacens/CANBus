@@ -1,0 +1,4 @@
+LED.c:64:5:main	8	static
+LED.c:109:6:SystemClock_Config	72	static
+LED.c:147:13:MX_GPIO_Init	32	static
+LED.c:174:6:Error_Handler	4	static,ignoring_inline_asm
