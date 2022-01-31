@@ -68,7 +68,7 @@ A programação para piscar o LED é relativamente simples, partindo das configu
 
 Dentro do loop while, são necessárias somente duas linha de código, TogglePin faz com que a saída especificada alterne entre ligado (1) e desligado (0) enquanto Delay faz com que seja necessário esperar um tempo antes de continuar a programação, o tempo inserido deve ser em milissegundos, nesse caso depois do delay o loop reinicia executando a programação novamente, cada vez alternando o estado do pino e aguardando o Delay, fazendo com que o pino do STM 32 alterne o estado, conectando o pino a um LED e o LED ao GND, fará com que o LED pisque de acordo com a programação. 
 
-Pasta com os arquivos do [FlashLed](https://github.com/maiafacens/FlashLed) ou acesso direto ao [main.c](https://github.com/maiafacens/FlashLed/blob/master/Core/Src/main.c)
+Pasta com os arquivos do [FlashLed](https://github.com/maiafacens/CANBus/tree/master/FlashLed-master) ou acesso direto ao [main.c](https://github.com/maiafacens/CANBus/blob/master/FlashLed-master/Core/Src/main.c)
 
 
 ### **<p align="center">Botão LED</p>**
@@ -98,7 +98,7 @@ A programação é relativamente simples.
 
 A condição para o if é de que, caso o botão (que deve ser montado conectado no pino C13) seja acionado assim enviando sinal alto para o pino, a função WritePin vai mandar sinal de RESET para o pino do LED fazendo com que enquanto o botão permanecer sendo pressionado a saída do pino A5 conexão do LED ficará com sinal lógico baixo, em qualquer outra condição em que o botão não esteja pressionado o programa segue para o else no qual a função TogglePin seguida de um Delay faz com que o pino de saída A5 alterne seu estado assim piscando o LED baseado no tempo do delay.
 
-Pasta com os arquivos do [BotaoLed](https://github.com/maiafacens/BotaoLed) ou acesso direto ao [main.c](https://github.com/maiafacens/BotaoLed/blob/master/Core/Src/main.c)
+Pasta com os arquivos do [BotaoLed](https://github.com/maiafacens/CANBus/tree/master/BotaoLed-master) ou acesso direto ao [main.c](https://github.com/maiafacens/CANBus/blob/master/BotaoLed-master/Core/Src/main.c)
 
 
 ### **<p align="center">Single Serial</p>**
@@ -138,7 +138,7 @@ O HAL_UART_Receive recebe no STM o sinal dos botões conectados às entradas, pa
 
 Logo após o if e o switch case é feita a montagem da tela utilizando um sprintf, todos as informações contidas no sprintf estão sendo alocadas no vetor DadoTX logo no início, depois é feito a montagem do texto que vai ser exibido na tela como estado dos LEDs e dos botões, e por último no sprintf os %d são associados com o correspondente GPIO Read Pin que verifica o estado do pino especificado assim exibindo o estado atual dos LEDs e dos botões que estão conectados nos pinos, e para finalizar enviando as informações a  função HAL_UART_Transmit envia do STM os dados armazenados no vetor da string DadoTX via FTDI USB para ser exibido via terminal serial no computador, os estados dos LEDs baseados nos dados que estão sendo recebidos pelo STM pelo serial como dos botões.
 
-Pasta com os arquivos do [SingleSerial](https://github.com/maiafacens/SingleSerial) ou acesso direto ao [main.c](https://github.com/maiafacens/SingleSerial/blob/master/Core/Src/main.c)
+Pasta com os arquivos do [SingleSerial](https://github.com/maiafacens/CANBus/tree/master/SingleSerial-master) ou acesso direto ao [main.c](https://github.com/maiafacens/CANBus/blob/master/SingleSerial-master/Core/Src/main.c)
 
 
 ### **<p align="center">CAN entre dois dispositivos</p>**
@@ -258,9 +258,9 @@ Quando a flag datacheck for alterada para 1 na função de recebimento de mensag
 
 Assim o funcionamento principal do código será então, quando o botão de interrupção do STM Master for acionado assim ativando a interrupção e enviando uma mensagem pelo TX para o outro STM, quando o segundo STM receber a mensagem será ativada um flag datacheck entrando na condição do main e piscando o LED de acordo com o loop for, saindo do loop o STM secundário envia de volta uma mensagem para o STM Master, que passará pelo mesmo processo da flag, entrar na condição, loop for piscando o LED, encerrando dessa forma e acionando novamente essa sequência quando é reconhecida uma interrupção no pino do STM Master.
 
-Pasta com os arquivos do [Master](https://github.com/maiafacens/TUT_CAN_MASTER) ou acesso direto ao [main.c](https://github.com/maiafacens/TUT_CAN_MASTER/blob/master/Core/Src/main.c)
+Pasta com os arquivos do [Master](https://github.com/maiafacens/CANBus/tree/master/TUT_CAN_MASTER-master) ou acesso direto ao [main.c](https://github.com/maiafacens/CANBus/blob/master/TUT_CAN_MASTER-master/Core/Src/main.c)
 
-Pasta com os arquivos do [Slave](https://github.com/maiafacens/TUT_CAN_F103) ou acesso direto ao [main.c](https://github.com/maiafacens/TUT_CAN_F103/blob/master/Core/Src/main.c)
+Pasta com os arquivos do [Slave](https://github.com/maiafacens/CANBus/tree/master/TUT_CAN_F103-master) ou acesso direto ao [main.c](https://github.com/maiafacens/CANBus/blob/master/TUT_CAN_F103-master/Core/Src/main.c)
 
 
 ### **<p align="center">ADC e PWM</p>**
@@ -337,9 +337,9 @@ O código da parte do PWM é bem simples o mais complexo realmente é a parametr
 </div>
 <br>
 
-Pasta com os arquivos do [PWM](https://github.com/maiafacens/PWM) ou acesso direto ao [main.c](https://github.com/maiafacens/PWM/blob/master/Core/Src/main.c)
+Pasta com os arquivos do [PWM](https://github.com/maiafacens/CANBus/tree/master/PWM-master) ou acesso direto ao [main.c](https://github.com/maiafacens/CANBus/blob/master/PWM-master/Core/Src/main.c)
 
-Pasta com os arquivos do [ADC](https://github.com/maiafacens/ADC-do-PWM) ou acesso direto ao [main.c](https://github.com/maiafacens/ADC-do-PWM/blob/master/Core/Src/main.c)
+Pasta com os arquivos do [ADC](https://github.com/maiafacens/CANBus/tree/master/ADC-do-PWM-master) ou acesso direto ao [main.c](https://github.com/maiafacens/CANBus/blob/master/ADC-do-PWM-master/Core/Src/main.c)
 
 ### **<p align="center">Lora e ADC</p>**
 
@@ -499,4 +499,4 @@ Após verificar a condição de datacheck (que é ativada quando uma mensagem vi
 
 Como um método de identificação do ID foi estabelecido no recebimento de mensagens e para a possibilidade de trabalhar com múltiplos ID’s simultaneamente, os filtros de ID nas configurações de canfilterconfig foram programados como 0 (zero), pois dessa forma essa função de filtro de ID que ocorre internamente na programação do STM irá aceitar qualquer ID recebido, então o que irá condicionar a filtragem de ID’s e mensagens serão as partes programadas no projeto.
 
-Pasta com os arquivos do [CAN_UART_Master](https://github.com/maiafacens/CAN_UART_Master) ou acesso direto ao [main.c](https://github.com/maiafacens/CAN_UART_Master/blob/master/Core/Src/main.c)
+Pasta com os arquivos do [CAN_UART_Master](https://github.com/maiafacens/CANBus/tree/master/CAN_UART_Master-master) ou acesso direto ao [main.c](https://github.com/maiafacens/CANBus/blob/master/CAN_UART_Master-master/Core/Src/main.c)
